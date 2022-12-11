@@ -1,0 +1,8 @@
+<div class="search">
+    <form action="/search" class="search__form">
+        <input type="search" class="search__input" name="s">
+    </form>
+    {% if keyword is defined %}
+    <p class="search__results">По вхождению "{{ keyword }}" найдено постов: {{ posts | length }} </p>
+    {% endif %}
+</div>

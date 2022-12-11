@@ -1,0 +1,4 @@
+/.pytest_cache/
+/venv/
+/log/api.log
+/.idea

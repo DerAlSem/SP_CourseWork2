@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+{% include 'includes/main_header.j2' %}
+
+<body>
+  <header class="container header">
+    <div class="header__wrapper">
+        {% include 'includes/header_back_button.j2' %}
+        {% include 'includes/header_logo.j2' %}
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="items">
+      <div class="items__item item item--post">
+        <div class="item__top">
+          <a href="/user-feed/ {{ post['poster_name'] }}" class="item__head">
+            <div class="item__ava-wrap">
+              <img src={{ post['poster_avatar'] }} alt="" class="item__ava" width="47">
+            </div>
+            <span class="item__username">{{ post['poster_name'] }}</span>
+          </a>
+          <button type="button" class="item__bookmark-btn">
+            <img src="/static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
+          </button>
+        </div>
+        <a href="" class="item__post-link">
+          <img src={{ post['pic'] }} alt="" width="348" class="item__post-img">
+        </a>
+        <div class="item__descr">
+          <p class="item__text">{{ text | safe }}</p>
+         </div>
+        <div class="item__bottom">
+          <div class="item__post-info">
+              {% if comments_count == 0 %}
+            <p class="item__comments-counter">Пока комментариев нет...</p>
+              {%  else %}
+              <p class="item__comments-counter">Комментариев: {{ comments_count }}</p>
+              {% endif %}
+            <div class="item__counter">
+              <img src="/static/img/eye.png" alt="" class="item__counter-icon" width="26">
+              <span class="item__counter-text">{{ post['views_count'] }}</span>
+              <img src="/static/img/heart.png" alt="" class="item__heart-icon" width="28">
+              <span class="item__counter-text">{{ post['likes_count'] }}</span>
+            </div>
+          </div>
+        {% if comments_count > 0 %}
+          <div class="item__comments">
+          {% for comment in comments %}
+            <p class="item__comment">
+              <b>{{ comment['commenter_name'] }}</b>: {{ comment['comment'] }}
+          {% endfor %}
+          </div>
+        {% endif %}
+        </div>
+      </div>
+    </section>
+  </main>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    {% include 'includes/footer_back.j2' %}
+    {% include 'includes/footer_post.j2' %}
+  </svg>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+{% include 'includes/main_header.j2' %}
+
+<body>
+  <header class="container header">
+    <div class="header__wrapper">
+        {% include 'includes/header_back_button.j2' %}
+        {% include 'includes/header_logo.j2' %}
+    </div>
+  </header>
+  <main class="container">
+    <section class="items">
+        {% include 'includes/posts_list.j2' %}
+    </section>
+  </main>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+        {% include 'includes/footer_back.j2' %}
+        {% include 'includes/footer_skyprogram.j2' %}
+  </svg>
+</body>
+
+</html>
